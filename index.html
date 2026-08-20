@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050505">
+<title>STRAW HAT STREAM — Bachelor Point S05</title>
+<style>
+:root{--bg:#050505;--gold:#f7c843;--muted:#9999a3;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#050505;color:#fff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{text-decoration:none;color:inherit}
+.nav{position:fixed;top:0;left:0;right:0;height:68px;z-index:50;display:flex;align-items:center;padding:0 5vw;background:linear-gradient(180deg,rgba(0,0,0,.92),rgba(0,0,0,.12));backdrop-filter:blur(13px)}
+.logo{font-weight:950;font-size:20px;letter-spacing:-.8px}.logo b{color:var(--gold)}
+.hero{height:min(720px,88vh);min-height:560px;position:relative;display:flex;align-items:end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;overflow:hidden;background:#050505}.hero-bg img{width:100%;height:100%;display:block;object-fit:cover;object-position:center}.hero-bg:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.55) 48%,rgba(0,0,0,.12)),linear-gradient(0deg,#050505,transparent 62%);pointer-events:none}
+.hero-content{position:relative;z-index:2;padding:0 6vw 70px;max-width:760px}
+.kicker{font-size:10px;color:var(--gold);font-weight:950;letter-spacing:2.4px}
+h1{font-size:clamp(48px,8vw,92px);line-height:.84;letter-spacing:-5px;margin:14px 0 17px}
+h1 span{color:#eee}.hero p{max-width:580px;color:#c4c4c9;line-height:1.6;font-size:14px}
+.hero-btn{display:inline-block;margin-top:18px;padding:11px 16px;border-radius:11px;background:#fff;color:#111;font-size:12px;font-weight:950}
+.main{padding:58px 4vw 90px}.wrap{max-width:1250px;margin:auto}
+.head{margin-bottom:20px}.eyebrow{font-size:10px;color:var(--gold);font-weight:950;letter-spacing:2.3px}.head h2{font-size:32px;letter-spacing:-1.6px;margin:5px 0}.head p{margin:0;color:#777;font-size:11px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{position:relative;min-height:225px;overflow:hidden;border:1px solid var(--line);border-radius:17px;background:#0b0b0b;transition:.25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(247,200,67,.35);box-shadow:0 18px 55px rgba(0,0,0,.4)}
+.card-bg{position:absolute;inset:0;background-position:center;background-size:cover;transition:.4s}.card:hover .card-bg{transform:scale(1.045)}
+.card-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.48)),linear-gradient(0deg,rgba(0,0,0,.85),transparent 65%)}
+.card-content{position:relative;z-index:2;min-height:225px;padding:20px;display:flex;flex-direction:column;justify-content:end}
+.part{font-size:9px;color:var(--gold);font-weight:950;letter-spacing:1.8px}
+.range{font-size:clamp(25px,3vw,34px);font-weight:950;letter-spacing:-1.5px;margin:5px 0}
+.meta{font-size:10px;color:#bbb}
+.servers{display:flex;gap:7px;margin-top:14px}
+.server{display:inline-flex;align-items:center;gap:6px;padding:9px 11px;border-radius:9px;background:#f7c843;color:#111;font-size:10px;font-weight:950;transition:.2s}
+.server:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.server.two{background:#fff}
+.server.disabled{opacity:.35;pointer-events:none}
+.note{margin-top:20px;border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:rgba(255,255,255,.03);color:#73737b;font-size:10px;line-height:1.6}
+footer{border-top:1px solid #151515;padding:25px 4vw 45px;color:#5d5d65;font-size:10px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){
+ .nav{height:62px;padding:0 18px}.hero{min-height:570px;height:75vh}.hero-content{padding:0 20px 48px}
+ .main{padding:42px 12px 70px}.grid{grid-template-columns:1fr;gap:12px}.card,.card-content{min-height:205px}.card-content{padding:18px}
+ .range{font-size:29px}.servers{gap:6px}.server{padding:9px 10px;font-size:10px}
+}
+
+/* ===== PREMIUM BUY ME A COFFEE ===== */
+.coffee-float{
+  position:fixed;right:18px;bottom:18px;z-index:120;
+  display:flex;align-items:center;gap:9px;
+  padding:11px 15px 11px 12px;border-radius:999px;
+  color:#17130a;text-decoration:none;font-size:12px;font-weight:950;
+  background:linear-gradient(135deg,#ffe56a,#ffc928);
+  border:1px solid rgba(255,255,255,.42);
+  box-shadow:0 14px 38px rgba(0,0,0,.42),0 0 0 1px rgba(255,201,40,.15);
+  cursor:pointer;transition:.25s;
+}
+.coffee-float:hover{transform:translateY(-3px) scale(1.025);box-shadow:0 18px 45px rgba(0,0,0,.5),0 0 28px rgba(255,201,40,.16)}
+.coffee-cup{
+  width:30px;height:30px;border-radius:50%;
+  display:grid;place-items:center;background:#17130a;color:#ffe56a;font-size:16px;
+}
+.coffee-modal{
+  position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+  padding:20px;background:rgba(0,0,0,.72);backdrop-filter:blur(16px);
+}
+.coffee-modal.show{display:flex}
+.coffee-box{
+  position:relative;width:min(430px,100%);overflow:hidden;
+  border:1px solid rgba(255,255,255,.13);border-radius:26px;
+  background:linear-gradient(145deg,#171717,#0b0b0b);
+  box-shadow:0 30px 100px rgba(0,0,0,.7);
+  animation:coffeeIn .28s ease-out;
+}
+@keyframes coffeeIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.coffee-glow{position:absolute;width:260px;height:260px;right:-100px;top:-110px;border-radius:50%;background:rgba(255,201,40,.13);filter:blur(10px)}
+.coffee-inner{position:relative;padding:32px 28px 27px;text-align:center}
+.coffee-icon{
+  width:64px;height:64px;margin:0 auto 17px;border-radius:20px;
+  display:grid;place-items:center;font-size:31px;
+  background:linear-gradient(135deg,#ffe36a,#f4b900);color:#17130a;
+  box-shadow:0 12px 35px rgba(255,193,7,.18);
+}
+.coffee-box h3{margin:0;font-size:25px;letter-spacing:-1px}
+.coffee-box p{margin:10px auto 20px;color:#a6a6af;font-size:13px;line-height:1.65;max-width:330px}
+.coffee-link{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:14px;border-radius:13px;
+  background:#fff;color:#111;font-size:13px;font-weight:950;
+  transition:.2s;
+}
+.coffee-link:hover{background:#ffe05b}
+.coffee-close{
+  position:relative;width:100%;margin-top:12px;height:44px;border-radius:12px;
+  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);
+  color:#cfcfd4;font-size:12px;font-weight:800;letter-spacing:.2px;cursor:pointer;
+  transition:.2s;
+}
+.coffee-close:hover{background:rgba(255,255,255,.10);color:#fff}
+.coffee-note{margin-top:12px;font-size:10px!important;color:#666!important}
+@media(max-width:560px){
+  .menu-toggle{z-index:151;position:absolute;right:8px}
+  .menu-panel{pointer-events:auto;right:8px;width:min(245px,calc(100vw - 16px))}
+  .coffee-float{right:13px;bottom:14px;padding:10px 13px 10px 10px}
+  .coffee-float span.label{font-size:11px}
+  .coffee-inner{padding:28px 21px 23px}
+}
+
+
+/* ===== CSS-ONLY MENU ===== */
+.menu-check{position:absolute;opacity:0;pointer-events:none}
+.menu-toggle{
+  position:fixed!important;right:10px!important;top:11px!important;
+  width:44px;height:44px;z-index:1000;
+  border-radius:12px;border:1px solid rgba(255,255,255,.14);
+  background:rgba(24,24,24,.86);backdrop-filter:blur(14px);
+  color:#fff;display:grid;place-items:center;
+  font-size:25px;line-height:1;cursor:pointer;
+  box-shadow:0 8px 28px rgba(0,0,0,.28);
+}
+.menu-toggle span{display:block;transform:translateY(-1px)}
+.menu-backdrop{position:fixed;inset:0;z-index:998;display:none;background:rgba(0,0,0,.38);backdrop-filter:blur(2px)}
+.menu-backdrop label{position:absolute;inset:0;display:block}
+.menu-panel{
+  position:fixed!important;right:10px!important;left:auto!important;top:64px!important;
+  z-index:999;width:250px;display:none;
+  padding:11px;border:1px solid rgba(255,255,255,.13);border-radius:18px;
+  background:rgba(13,13,13,.94);backdrop-filter:blur(22px);
+  box-shadow:0 24px 70px rgba(0,0,0,.62);
+}
+.menu-check:checked ~ .menu-backdrop{display:block}
+.menu-check:checked ~ .menu-panel{display:block;animation:menuDrop .18s ease-out}
+@keyframes menuDrop{from{opacity:0;transform:translateY(-7px) scale(.98)}to{opacity:1;transform:none}}
+.menu-title{padding:9px 10px 8px;color:#777;font-size:9px;font-weight:900;letter-spacing:1.8px}
+.menu-row{
+  width:100%;min-height:48px;display:flex;align-items:center;gap:11px;
+  padding:7px 9px;border-radius:12px;color:#ddd;
+  text-decoration:none;font-size:12px;font-weight:800;transition:.18s;
+}
+.menu-row:hover{background:rgba(255,255,255,.07);color:#fff}
+.menu-icon{
+  width:32px;height:32px;flex:0 0 32px;border-radius:10px;
+  display:grid;place-items:center;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.07);font-weight:950;font-size:14px;
+}
+.menu-icon.facebook{color:#69a8ff}.menu-icon.messenger{color:#7fb5ff}.menu-icon.telegram{color:#5bc9ff}
+.menu-icon.instagram{color:#ff79ab}.menu-icon.twitter{color:#fff}
+.menu-link{flex:1}
+.menu-divider{height:1px;background:rgba(255,255,255,.08);margin:6px 4px}
+@media(max-width:560px){
+  .menu-toggle{right:8px!important;top:9px!important}
+  .menu-panel{right:8px!important;top:61px!important;width:min(250px,calc(100vw - 16px))}
+}
+
+
+
+/* ===== SEE HOW TO DOWNLOAD + MINI PLAYER ===== */
+.hero-help-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:0 18px;margin-left:8px;border-radius:15px;
+  border:1px solid rgba(255,255,255,.14);color:#fff;
+  background:rgba(255,255,255,.07);backdrop-filter:blur(14px);
+  font:800 12px/1 Arial,sans-serif;letter-spacing:.1px;cursor:pointer;
+  transition:.2s ease;
+}
+.hero-help-btn:hover{background:rgba(255,255,255,.13);transform:translateY(-1px)}
+.guide-overlay{
+  position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;
+  padding:18px;background:rgba(0,0,0,.76);backdrop-filter:blur(15px);
+}
+.guide-overlay.show{display:flex}
+.guide-modal{
+  width:min(720px,100%);border:1px solid rgba(255,255,255,.14);
+  border-radius:24px;background:linear-gradient(145deg,rgba(24,24,24,.98),rgba(8,8,8,.98));
+  box-shadow:0 30px 100px rgba(0,0,0,.7);overflow:hidden;
+}
+.guide-head{display:flex;align-items:center;justify-content:space-between;padding:18px 18px 14px}
+.guide-kicker{font:900 9px/1 Arial,sans-serif;letter-spacing:2px;color:#ffd13d}
+.guide-head h3{margin:7px 0 0;color:#fff;font:900 21px/1.05 Arial,sans-serif}
+.guide-close{
+  width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.07);color:#fff;font-size:23px;cursor:pointer;
+}
+.video-shell{position:relative;background:#000}
+.video-shell video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#000}
+.video-controls{
+  position:absolute;left:10px;right:10px;bottom:10px;
+  display:flex;align-items:center;gap:7px;min-width:0;
+  padding:9px 10px;border-radius:15px;background:rgba(10,10,10,.84);
+  border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(14px);
+  overflow:hidden;
+}
+.vc-btn,.vc-select{
+  flex:0 0 auto;min-width:38px;border:0;color:#fff;
+  background:rgba(255,255,255,.09);border-radius:9px;
+  height:36px;font:800 11px Arial,sans-serif;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.vc-btn{padding:0 9px}
+#playBtn{
+  width:48px;height:42px;min-width:48px;padding:0;border-radius:12px;
+  background:linear-gradient(145deg,#fff,#e9e9e9);color:#111;
+  font-size:18px;display:grid;place-items:center;
+  box-shadow:0 5px 18px rgba(0,0,0,.28);
+}
+#playBtn:hover{transform:scale(1.03);background:#fff}
+#playBtn:active{transform:scale(.97)}
+.vc-select{padding:0 8px;max-width:82px}
+.time{flex:0 0 auto;font:700 10px/1 Arial,sans-serif;color:#ddd;white-space:nowrap}
+.seek{flex:1 1 auto;width:auto;min-width:40px;accent-color:#ffd13d}
+.volume{flex:0 1 62px;width:62px;min-width:35px;accent-color:#ffd13d}
+.guide-note{margin:0;padding:13px 18px 18px;color:#777;font:500 11px/1.55 Arial,sans-serif}
+.guide-note b{color:#aaa}
+.guide-open{overflow:hidden}
+.video-shell:fullscreen{
+  width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;
+  background:#000;overflow:hidden;
+}
+.video-shell:fullscreen video{
+  width:min(100vw,177.7778vh);
+  height:min(56.25vw,100vh);
+  aspect-ratio:16/9;
+  object-fit:contain;
+  background:#000;
+}
+.video-shell:fullscreen .video-controls{
+  left:50%;right:auto;bottom:max(12px,2vh);
+  width:min(calc(100vw - 20px),calc(177.7778vh - 20px));
+  transform:translateX(-50%);
+}
+@media(max-width:600px){
+  .hero-help-btn{margin:8px 0 0;width:100%}
+  .guide-overlay{padding:10px}
+  .guide-modal{border-radius:20px}
+  .guide-head{padding:15px}
+  .guide-head h3{font-size:18px}
+  .video-controls{gap:4px;padding:7px 6px;left:8px;right:8px}
+  .volume{display:none}
+  .vc-select{font-size:10px;max-width:68px;min-width:52px;padding:0 5px}
+  .time{font-size:9px}
+  .seek{min-width:35px}
+  #playBtn{width:44px;height:40px;min-width:44px}
+}
+
+
+.video-center-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:68px;height:68px;border-radius:50%;border:1px solid rgba(255,255,255,.3);
+  background:rgba(20,20,20,.72);backdrop-filter:blur(10px);
+  color:#fff;font-size:28px;display:grid;place-items:center;cursor:pointer;
+  box-shadow:0 12px 40px rgba(0,0,0,.45);z-index:4;
+}
+.video-center-play:hover{background:rgba(255,255,255,.16);transform:translate(-50%,-50%) scale(1.04)}
+.video-shell.is-playing .video-center-play{display:none}
+
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="logo">STRAW HAT <b>STREAM</b></div>
+</header>
+
+<!-- CSS-only mobile-safe menu: no JavaScript required -->
+<input class="menu-check" type="checkbox" id="menuCheck">
+<label class="menu-toggle" for="menuCheck" aria-label="Open menu"><span>☰</span></label>
+
+<div class="menu-backdrop">
+  <label for="menuCheck" aria-label="Close menu"></label>
+</div>
+
+<aside class="menu-panel" aria-label="Connect menu">
+  <div class="menu-title">CONNECT WITH US</div>
+
+  <div class="menu-row">
+    <span class="menu-icon">✉</span>
+    <a class="menu-link" href="mailto:shihabrahman056@gmail.com">Contact</a>
+  </div>
+
+  <div class="menu-divider"></div>
+
+  <a class="menu-row" href="https://www.facebook.com/share/1GPmAh48mK/" target="_blank" rel="noopener">
+    <span class="menu-icon facebook">f</span><span class="menu-link">Facebook</span>
+  </a>
+  <a class="menu-row" href="https://m.me/shihabrahman.056" target="_blank" rel="noopener">
+    <span class="menu-icon messenger">⌁</span><span class="menu-link">Messenger</span>
+  </a>
+  <a class="menu-row" href="https://t.me/ShihabRahman04" target="_blank" rel="noopener">
+    <span class="menu-icon telegram">✈</span><span class="menu-link">Telegram</span>
+  </a>
+  <a class="menu-row" href="https://www.instagram.com/shihabrahman.056/" target="_blank" rel="noopener">
+    <span class="menu-icon instagram">◎</span><span class="menu-link">Instagram</span>
+  </a>
+  <a class="menu-row" href="https://twitter.com/ShihabRahman056" target="_blank" rel="noopener">
+    <span class="menu-icon twitter">𝕏</span><span class="menu-link">Twitter / X</span>
+  </a>
+</aside>
+
+<section class="hero">
+  <div class="hero-bg"><img src="https://i.postimg.cc/0QsTFkmm/Poster.jpg" alt="Bachelor Point Season 05"></div>
+  <div class="hero-content">
+    <div class="kicker">STRAW HAT STREAM • SEASON 05</div>
+    <h1>BACHELOR<br><span>POINT</span></h1>
+    <p>Season 05 episode collections — compact, cinematic and built around fast 1080p downloads.</p>
+    <a class="hero-btn" href="#parts">Browse Parts ↓</a><button class="hero-help-btn" type="button" id="downloadGuideBtn">See how to download</button>
+  </div>
+</section>
+
+<main class="main" id="parts">
+<div class="wrap">
+  <div class="head">
+    <div class="eyebrow">SEASON 05</div>
+    <h2>Episode Parts</h2>
+    <p>Eight episodes per part • Server 01 + Server 02 backup</p>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+</main>
+
+<footer><div class="wrap">👒 STRAW HAT STREAM •Bachelor Point Season 05</div></footer>
+
+<script>
+const COFFEE_URL="https://www.supportkori.com/shihabrahman";
+const DEFAULT_IMAGE="https://i.postimg.cc/0QsTFkmm/Poster.jpg";
+
+/* banner image Url */
+const IMAGE_URLS={
+  hero:"https://i.postimg.cc/0QsTFkmm/Poster.jpg",
+  "1-8":'https://i.postimg.cc/N0mhd9yq/E1-8.jpg',
+  "9-16":'https://i.postimg.cc/tJr8sFck/E9-16.jpg',
+  "17-24":'https://i.postimg.cc/Y9z5w5ff/E17-24.jpg',
+  "25-32":'https://i.postimg.cc/KzD6y6r7/E25-32.jpg',
+  "33-40":'https://i.postimg.cc/FRVMQMgG/E33-40.jpg',
+  "41-48":'https://i.postimg.cc/zBFs1sSs/E41-48.jpg',
+  "49-56":'https://i.postimg.cc/ZnfXW6Q5/E49-56.jpg',
+  "57-64":'https://i.postimg.cc/Vv72JXhY/E57-64.jpg',
+  "65-72":'https://i.postimg.cc/4y8jYp0d/E65-72.jpg',
+  "73-80":'https://i.postimg.cc/6qHF8CPW/E73-80.jpg',
+  "81-88":'https://i.postimg.cc/d3WghGfL/E81-88.jpg',
+  "89-96":'https://i.postimg.cc/5yPDX8rF/E89-96.jpg',
+  "97-100":'https://i.postimg.cc/fyH1VYPK/E97-104.jpg',
+  "101-104":'https://i.postimg.cc/fyH1VYPK/E97-104.jpg',
+  "105-112":'https://i.postimg.cc/Jn5fWfcG/E105-112.jpg'
+};
+
+/* Download Links */
+const PART_LINKS={
+ "1-8":  {server1:"https://instant.busycdn.xyz/a37c0ea9b04096554c1357dd8ad2a49af850883e407abc2861db52b2c4ee8997739945f37e355448838584ad12de0f42e05255e85706c7751d71d27347088a7cbf0c7d10679ae0c96cceffee0e159b1358515bed111822d87048c600f9337bb279cf5dfe46b590c53fdf4c3912d8fb59617a8be5b2c2de989ee6e3d4cc860dd3::c993a2455f7db74b65a046d18f01d86e?bytes=6129841320",server2:"https://filesgram.xyz/?start=3_98y3v7x8&bot=gdflix28_bot"},
+ "9-16": {server1:"https://gdlink.dev/file/vn90APU40xfglOF",server2:"https://filesgram.xyz/?start=3_66y3v1w8v4&bot=gdflix28_bot"},
+ "17-24":{server1:"https://gdlink.dev/file/DYVcCmhnIUsxy6E",server2:"https://filesgram.xyz/?start=3_1214y0v7w3v5&bot=gdflix28_bot"},
+ "25-32":{server1:"https://gdflix.dev/file/Cv3Psap0hRzhIwc",server2:"https://filesgram.xyz/?start=3_2005y4v7z2006y2v8&bot=gdflix28_bot"},
+ "33-40":{server1:"https://gdflix.dev/file/JCpEM0AV91ZWUck",server2:"https://filesgram.xyz/?start=3_3214y9v8&bot=gdflix28_bot"},
+ "41-48":{server1:"https://gdflix.dev/file/Sum4SdvPWuh7Yau",server2:"https://filesgram.xyz/?start=3_5221y5v8w6v0w2z5222y5v5&bot=gdflix28_bot"},
+ "49-56":{server1:"https://gdflix.dev/file/8Scln3PLKkX33U4",server2:"https://filesgram.xyz/?start=7_1967y7v3&bot=gdflix28_bot"},
+ "57-64":{server1:"https://gdflix.dev/file/7kcD1grerOUp6Wf",server2:"https://filesgram.xyz/?start=8_247y5v7w9&bot=gdflix28_bot"},
+ "65-72":{server1:"https://gdflix.dev/file/5Pghp9RfZgyrZdj",server2:"https://filesgram.xyz/?start=8_483y3v7w4v2&bot=gdflix28_bot"},
+ "73-80":{server1:"https://gdflix.dev/file/dBzu3Z3urKjVPDz",server2:"https://filesgram.xyz/?start=8_777y3v6w4v0&bot=gdflix28_bot"},
+ "81-88":{server1:"https://gdflix.dev/file/JWQYNCC6zzmA9Fg",server2:"https://filesgram.xyz/?start=8_1004y9v2w6&bot=gdflix28_bot"},
+ "89-96":{server1:"https://gdflix.dev/file/BR0Mrhpq4lkBGRB",server2:"https://filesgram.xyz/?start=8_1272y0v5w7&bot=gdflix28_bot"},
+ "97-100":{server1:"https://gdflix.dev/file/c58qrBBmj737aN8",server2:"https://filesgram.xyz/?start=8_1663y3v3&bot=gdflix28_bot"},
+ "101-104":{server1:"https://gdflix.dev/file/G4kPEseR1A9a81r",server2:"https://filesgram.xyz/?start=8_1733y8v4&bot=gdflix28_bot"},
+ "105-112":{server1:"https://gdflix.dev/file/il03AG97D5FI2Sr",server2:"https://filesgram.xyz/?start=8_2078y2v6w9&bot=gdflix28_bot"}
+};
+
+const grid=document.getElementById("grid");
+Object.entries(PART_LINKS).forEach(([range,links],i)=>{
+ const [a,b]=range.split("-");
+ const card=document.createElement("article");
+ card.className="card";
+ const s1=typeof links.server1==="string"?links.server1.trim():"";
+ const s2=typeof links.server2==="string"?links.server2.trim():"";
+ card.innerHTML=`
+  <div class="card-bg" style="background-image:url('${IMAGE_URLS[range]||DEFAULT_IMAGE}')"></div>
+  <div class="card-content">
+   <div class="part">PART ${String(i+1).padStart(2,"0")}</div>
+   <div class="range">Episode ${a}–${b}</div>
+   <div class="meta">Season 05 • 8 Episodes • 1080p</div>
+   <div class="servers">
+    <a class="server ${s1?'':'disabled'}" href="${s1||'#'}" target="_blank" rel="noopener">↓ SERVER 01</a>
+    <a class="server two ${s2?'':'disabled'}" href="${s2||'#'}" target="_blank" rel="noopener">↓ DOWNLOAD FROM TELEGRAM</a>
+   </div>
+  </div>`;
+ grid.appendChild(card);
+});
+</script>
+
+<!-- Premium Buy Me a Coffee -->
+<a class="coffee-float" href="https://www.supportkori.com/shihabrahman" id="coffeeFloat" aria-label="Buy me a coffee">
+  <span class="coffee-cup">☕</span><span class="label">BUY ME A COFFEE</span>
+</a>
+
+<div class="coffee-modal" id="coffeeModal" aria-hidden="true">
+  <div class="coffee-box" role="dialog" aria-modal="true" aria-labelledby="coffeeTitle">
+    <div class="coffee-glow"></div>
+    <div class="coffee-inner">
+      <div class="coffee-icon">☕</div>
+      <h3 id="coffeeTitle">Enjoying STRAW HAT STREAM?</h3>
+      <p>If this little project helped you, you can support the site with a coffee. It helps keep the project running. ❤️</p>
+      <a class="coffee-link" id="coffeeLink" href="https://www.supportkori.com/shihabrahman" target="_blank" rel="noopener">☕ SUPPORT THE PROJECT</a>
+      <button class="coffee-close" id="coffeeClose" aria-label="Maybe later">Maybe Later</button>
+      <p class="coffee-note">Support is optional — you can choose Maybe Later.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== BUY ME A COFFEE SETUP =====
+   Replace this with your Buy Me a Coffee profile URL.
+   Example: https://www.buymeacoffee.com/yourname
+*/
+const BUY_ME_A_COFFEE_URL="https://www.supportkori.com/shihabrahman";
+
+const coffeeFloat = document.getElementById("coffeeFloat");
+const coffeeModal = document.getElementById("coffeeModal");
+const coffeeClose = document.getElementById("coffeeClose");
+const coffeeLink = document.getElementById("coffeeLink");
+
+coffeeFloat.addEventListener("click", function(e){
+  if(BUY_ME_A_COFFEE_URL === "#"){
+    e.preventDefault();
+    coffeeModal.classList.add("show");
+    coffeeModal.setAttribute("aria-hidden","false");
+  }
+});
+coffeeLink.href = BUY_ME_A_COFFEE_URL;
+
+coffeeClose.addEventListener("click",()=>{
+  coffeeModal.classList.remove("show");
+  coffeeModal.setAttribute("aria-hidden","true");
+});
+coffeeModal.addEventListener("click",e=>{
+  if(e.target === coffeeModal) coffeeClose.click();
+});
+document.addEventListener("keydown",e=>{
+  if(e.key === "Escape" && coffeeModal.classList.contains("show")) coffeeClose.click();
+});
+</script>
+
+<!-- Menu is CSS-only for reliable mobile tapping. -->
+
+<!-- ===== DOWNLOAD GUIDE MINI PLAYER ===== -->
+<div class="guide-overlay" id="guideOverlay" aria-hidden="true">
+  <div class="guide-modal" id="guideModal" role="dialog" aria-modal="true" aria-label="How to download">
+    <div class="guide-head">
+      <div>
+        <span class="guide-kicker">QUICK GUIDE</span>
+        <h3>See how to download</h3>
+      </div>
+      <button class="guide-close" id="guideClose" type="button" aria-label="Close">×</button>
+    </div>
+
+    <div class="video-shell" id="guideVideoShell">
+      <button class="video-center-play" id="centerPlayBtn" type="button" aria-label="Play tutorial">▶</button>
+      <video id="guideVideo" preload="metadata" playsinline>
+        <!-- Put your MP4 tutorial URL here -->
+        <source id="guideVideoSource" src="https://github.com/Neo045/Pictures/raw/refs/heads/main/Intro.mp4" type="video/mp4">
+      </video>
+
+      <div class="video-controls">
+        <button class="vc-btn" id="playBtn" type="button">▶</button>
+        <span class="time" id="timeCurrent">0:00</span>
+        <input class="seek" id="seekBar" type="range" min="0" max="100" value="0" aria-label="Seek">
+        <span class="time" id="timeDuration">0:00</span>
+
+        <button class="vc-btn" id="muteBtn" type="button">🔊</button>
+        <input class="volume" id="volumeBar" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+
+        <select class="vc-select" id="speedSelect" aria-label="Playback speed">
+          <option value="0.5">0.5×</option>
+          <option value="0.75">0.75×</option>
+          <option value="1" selected>1×</option>
+          <option value="1.25">1.25×</option>
+          <option value="1.5">1.5×</option>
+          <option value="2">2×</option>
+        </select>
+
+        <select class="vc-select" id="qualitySelect" aria-label="Video quality">
+          <option value="auto">Auto</option>
+          <option value="1080">1080p</option>
+          <option value="720">720p</option>
+          <option value="480">480p</option>
+        </select>
+
+        <button class="vc-btn" id="fullscreenBtn" type="button" aria-label="Fullscreen">⛶</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== DOWNLOAD GUIDE PLAYER CONFIG =====
+   Replace these with your own MP4 URLs.
+   Quality switching works by changing the video source.
+*/
+const GUIDE_VIDEO = {
+  auto: "https://github.com/Neo045/Pictures/raw/refs/heads/main/Intro.mp4",
+  1080: "https://github.com/Neo045/Pictures/raw/refs/heads/main/Intro.mp4",
+  720: "https://github.com/Neo045/Pictures/raw/refs/heads/main/Intro.mp4",
+  480: "https://github.com/Neo045/Pictures/raw/refs/heads/main/Intro.mp4"
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("guideOverlay");
+  const modal = document.getElementById("guideModal");
+  const openBtn = document.getElementById("downloadGuideBtn");
+  const closeBtn = document.getElementById("guideClose");
+  const video = document.getElementById("guideVideo");
+  const source = document.getElementById("guideVideoSource");
+  const shell = document.getElementById("guideVideoShell");
+  const play = document.getElementById("playBtn");
+  const centerPlay = document.getElementById("centerPlayBtn");
+  const seek = document.getElementById("seekBar");
+  const current = document.getElementById("timeCurrent");
+  const duration = document.getElementById("timeDuration");
+  const mute = document.getElementById("muteBtn");
+  const volume = document.getElementById("volumeBar");
+  const speed = document.getElementById("speedSelect");
+  const quality = document.getElementById("qualitySelect");
+  const fullscreen = document.getElementById("fullscreenBtn");
+
+  if (!overlay || !openBtn || !video || !centerPlay) return;
+
+  const fmt = (s) => {
+    if (!Number.isFinite(s)) return "0:00";
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60).toString().padStart(2, "0");
+    return `${m}:${sec}`;
+  };
+
+  async function openGuide() {
+    overlay.classList.add("show");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("guide-open");
+
+    // Start the tutorial immediately. If the browser blocks audible autoplay,
+    // retry muted so the video still starts automatically.
+    try {
+      video.muted = false;
+      await video.play();
+    } catch (_) {
+      try {
+        video.muted = true;
+        mute.textContent = "🔇";
+        await video.play();
+      } catch (_) {}
+    }
+  }
+
+  function closeGuide() {
+    overlay.classList.remove("show");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("guide-open");
+    video.pause();
+    shell.classList.remove("is-playing");
+    play.textContent = "▶";
+  }
+
+  function loadQuality(q) {
+    const url = GUIDE_VIDEO[q] || GUIDE_VIDEO.auto;
+    if (!url || url.startsWith("YOUR_")) return;
+
+    const wasPlaying = !video.paused;
+    const position = video.currentTime || 0;
+    source.src = url;
+    video.load();
+    video.addEventListener("loadedmetadata", function restore() {
+      video.removeEventListener("loadedmetadata", restore);
+      video.currentTime = Math.min(position, video.duration || position);
+      if (wasPlaying) video.play().catch(() => {});
+    });
+  }
+
+  openBtn.addEventListener("click", openGuide);
+  closeBtn.addEventListener("click", closeGuide);
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeGuide();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains("show")) closeGuide();
+  });
+
+  function togglePlay() {
+    if (video.paused) video.play().catch(() => {});
+    else video.pause();
+  }
+
+  play.addEventListener("click", togglePlay);
+  centerPlay.addEventListener("click", togglePlay);
+  video.addEventListener("click", () => {
+    if (!video.controls) togglePlay();
+  });
+
+  video.addEventListener("play", () => {
+    play.textContent = "❚❚";
+    shell.classList.add("is-playing");
+  });
+  video.addEventListener("pause", () => {
+    play.textContent = "▶";
+    shell.classList.remove("is-playing");
+  });
+  video.addEventListener("ended", () => {
+    play.textContent = "▶";
+    shell.classList.remove("is-playing");
+  });
+
+  video.addEventListener("loadedmetadata", () => {
+    duration.textContent = fmt(video.duration);
+  });
+
+  video.addEventListener("timeupdate", () => {
+    current.textContent = fmt(video.currentTime);
+    seek.value = video.duration ? (video.currentTime / video.duration) * 100 : 0;
+  });
+
+  seek.addEventListener("input", () => {
+    if (video.duration) video.currentTime = (seek.value / 100) * video.duration;
+  });
+
+  volume.addEventListener("input", () => {
+    video.volume = Number(volume.value);
+    video.muted = video.volume === 0;
+    mute.textContent = video.muted ? "🔇" : "🔊";
+  });
+
+  mute.addEventListener("click", () => {
+    video.muted = !video.muted;
+    mute.textContent = video.muted ? "🔇" : "🔊";
+  });
+
+  speed.addEventListener("change", () => {
+    video.playbackRate = Number(speed.value);
+  });
+
+  quality.addEventListener("change", () => loadQuality(quality.value));
+
+  async function enterTrueFullscreen() {
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+        return;
+      }
+      if (shell.requestFullscreen) {
+        await shell.requestFullscreen({navigationUI:"hide"});
+      } else if (video.webkitEnterFullscreen) {
+        video.webkitEnterFullscreen();
+        return;
+      }
+      if (screen.orientation && screen.orientation.lock) {
+        try { await screen.orientation.lock("landscape"); } catch (_) {}
+      }
+    } catch (_) {}
+  }
+
+  fullscreen.addEventListener("click", enterTrueFullscreen);
+
+  document.addEventListener("fullscreenchange", async () => {
+    if (!document.fullscreenElement && screen.orientation && screen.orientation.unlock) {
+      try { screen.orientation.unlock(); } catch (_) {}
+    }
+  });
+
+  video.addEventListener("dblclick", () => fullscreen.click());
+});
+</script>
+
+</body>
+</html>

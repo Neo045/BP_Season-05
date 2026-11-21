@@ -573,6 +573,54 @@ Object.entries(PART_LINKS).forEach(([range,links],i)=>{
   </div>`;
  grid.appendChild(card);
 });
+
+// Episode collection search
+const episodeSearch = document.getElementById("episodeSearch");
+const catalogCount = document.getElementById("catalogCount");
+const emptyState = document.getElementById("emptyState");
+const episodeCards = Array.from(grid.querySelectorAll(".card"));
+
+function filterEpisodeCollections() {
+  const query = episodeSearch.value
+    .trim()
+    .toLowerCase()
+    .replace(/^episode\s*/i, "")
+    .replace(/\s+/g, "");
+
+  let visibleCount = 0;
+
+  episodeCards.forEach((card) => {
+    const rangeText = card.querySelector(".range")?.textContent || "";
+    const rangeMatch = rangeText.match(/(\d+)\s*[-–]\s*(\d+)/);
+    let matches = !query;
+
+    if (query && rangeMatch) {
+      const rangeStart = Number(rangeMatch[1]);
+      const rangeEnd = Number(rangeMatch[2]);
+      const exactRange = query.match(/^(\d+)[-–](\d+)$/);
+
+      if (exactRange) {
+        matches =
+          rangeStart === Number(exactRange[1]) &&
+          rangeEnd === Number(exactRange[2]);
+      } else if (/^\d+$/.test(query)) {
+        const episodeNumber = Number(query);
+        matches = episodeNumber >= rangeStart && episodeNumber <= rangeEnd;
+      }
+    }
+
+    card.hidden = !matches;
+    if (matches) visibleCount++;
+  });
+
+  catalogCount.textContent =
+    `${visibleCount} / ${episodeCards.length} COLLECTIONS`;
+  emptyState.hidden = visibleCount !== 0;
+}
+
+episodeSearch.addEventListener("input", filterEpisodeCollections);
+filterEpisodeCollections();
+
 </script>
 
 <!-- Premium Buy Me a Coffee -->
